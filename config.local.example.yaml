@@ -1,0 +1,7 @@
+# OPCIONAL: só é necessário se o dataset NÃO estiver em datasets/LA.
+# Copie para config.local.yaml (pessoal, fora do git) e ajuste.
+# data:
+#   root: C:/Users/SEU_USUARIO/Downloads/LA
+# Opcional, só se o treino travar no Windows:
+# train:
+#   num_workers: 0

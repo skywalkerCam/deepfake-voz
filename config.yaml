@@ -1,0 +1,64 @@
+# Configuração COMPARTILHADA pela equipe.
+# Para a comparação ser justa, todos usam o MESMO arquivo (mesmo subset,
+# mesmas features, mesma seed). Hiperparâmetros específicos de cada modelo
+# ficam em `models.<nome>`.
+
+seed: 42
+
+data:
+  # Padrão: extraia o LA.zip em datasets/ (a pasta fica fora do git).
+  # Se o seu dataset estiver em outro lugar, use config.local.yaml.
+  root: datasets/LA
+  subset_dir: data/subset   # CSVs do subconjunto (versionar no git!)
+  cache_dir: data/cache     # features pré-computadas (.npy) — NÃO versionar
+  # Tamanho do subconjunto aleatório por split e por classe.
+  # O spoof é amostrado estratificado por sistema de ataque (A01..A19).
+  # Totais do LA: train 2580 bona/22800 spoof | dev 2548/22296 | eval 7355/63882
+  subset:
+    train: {bonafide: 2000, spoof: 2000}
+    dev:   {bonafide: 1000, spoof: 1000}
+    eval:  {bonafide: 2000, spoof: 2000}
+
+audio:
+  sample_rate: 16000
+  max_seconds: 4.0          # corta/repete para duração fixa
+
+features:
+  type: lfcc                # lfcc | logmel
+  n_fft: 512
+  hop_length: 160           # 10 ms
+  win_length: 400           # 25 ms
+  lfcc:
+    n_filter: 70
+    n_lfcc: 20
+    deltas: true            # 20 estáticos + Δ + ΔΔ = 60 coeficientes
+  logmel:
+    n_mels: 80
+
+train:
+  batch_size: 32
+  epochs: 30
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 5               # early stopping pelo EER do dev
+  num_workers: 2
+
+output_dir: results
+
+models:
+  cnn:
+    channels: [32, 64, 128, 128]
+    dropout: 0.3
+  rnn:
+    # Sugestão inicial — ajuste à vontade
+    hidden_size: 128
+    num_layers: 2
+    bidirectional: true
+    dropout: 0.3
+  transformer:
+    # Sugestão inicial — ajuste à vontade
+    d_model: 128
+    n_heads: 4
+    num_layers: 3
+    dim_feedforward: 256
+    dropout: 0.1
