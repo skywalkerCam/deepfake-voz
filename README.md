@@ -6,7 +6,7 @@ usando um subconjunto do **ASVspoof 2019 LA**.
 | Modelo        | Família       | Arquivo                     | Responsável  | Status          |
 |---------------|---------------|-----------------------------|--------------|-----------------|
 | `cnn`         | Convolucional | `src/models/cnn.py`         | Camilly      | ✅ pronto        |
-| `rnn`         | Recorrente    | `src/models/rnn.py`         | Integrante 2 | ⬜ a fazer       |
+| `rnn`         | Recorrente    | `src/models/rnn.py`         | Victor       | ✅ pronto        |
 | `transformer` | Atenção       | `src/models/transformer.py` | Integrante 3 | ⬜ a fazer       |
 
 ## Como rodar (Windows)
@@ -74,7 +74,7 @@ git push
 | Modelo | Precision | Recall | F1     | EER    |
 |--------|-----------|--------|--------|--------|
 | CNN    | 0.9889    | 0.7585 | 0.8585 | 10.05% |
-| RNN    | –         | –      | –      | –      |
+| RNN    | 0.9837    | 0.7225 | 0.8331 | 8.60%  |
 | Transformer | –    | –      | –      | –      |
 
 ## Problemas comuns

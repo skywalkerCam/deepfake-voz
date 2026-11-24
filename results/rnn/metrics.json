@@ -1,0 +1,39 @@
+{
+  "model": "rnn",
+  "n_params": 672385,
+  "features": "lfcc_60x401",
+  "epochs_run": 22,
+  "train_time_s": 1052.1,
+  "dev": {
+    "precision": 0.985985985985986,
+    "recall": 0.985,
+    "f1": 0.9854927463731866,
+    "eer": 0.014500000000000006,
+    "accuracy": 0.9855,
+    "roc_auc": 0.9985120000000001,
+    "threshold": 0.9641285538673401,
+    "eer_threshold_this_split": 0.9641285538673401,
+    "confusion": {
+      "tn": 986,
+      "fp": 14,
+      "fn": 15,
+      "tp": 985
+    }
+  },
+  "eval": {
+    "precision": 0.9836623553437712,
+    "recall": 0.7225,
+    "f1": 0.8330931104064572,
+    "eer": 0.08599999999999998,
+    "accuracy": 0.85525,
+    "roc_auc": 0.9590900000000002,
+    "threshold": 0.9641285538673401,
+    "eer_threshold_this_split": 0.0004833392449654639,
+    "confusion": {
+      "tn": 1976,
+      "fp": 24,
+      "fn": 555,
+      "tp": 1445
+    }
+  }
+}

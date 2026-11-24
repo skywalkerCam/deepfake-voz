@@ -50,11 +50,14 @@ models:
     channels: [32, 64, 128, 128]
     dropout: 0.3
   rnn:
-    # Sugestão inicial — ajuste à vontade
     hidden_size: 128
     num_layers: 2
     bidirectional: true
     dropout: 0.3
+    cell: lstm              # lstm | gru
+    pooling: attention      # attention | mean | last
+    frame_stack: 1          # 1 = todos os 401 frames; k>1 junta k frames por passo
+ 
   transformer:
     # Sugestão inicial — ajuste à vontade
     d_model: 128
